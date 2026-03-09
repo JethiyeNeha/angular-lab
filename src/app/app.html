@@ -1,0 +1,38 @@
+<div style="padding: 2rem; font-family: monospace;">
+  
+  <h2>🔬 Signal Playground</h2>
+
+  <!-- Reading signals — always () -->
+  <p>Count: {{ count() }}</p>
+  <p>Double: {{ doubleCount() }}</p>
+  <p>Is Even: {{ isEven() }}</p>
+  <p>Full Name: {{ fullName() }}</p>
+
+  <!-- Buttons -->
+  <button (click)="decrement()">-</button>
+  <button (click)="increment()">+</button>
+  <button (click)="reset()">Reset</button>
+
+  <hr />
+
+  <!-- Signal as input binding -->
+  <input 
+    [value]="firstName()" 
+    (input)="firstName.set($any($event.target).value)"
+    placeholder="First name"
+  />
+  <input 
+    [value]="lastName()" 
+    (input)="lastName.set($any($event.target).value)"
+    placeholder="Last name"
+  />
+
+  @if (count() > 5) {
+    <p style="color: green">🎉 Count is greater than 5!</p>
+  } @else if (count() < 0) {
+    <p style="color: red">⚠️ Count is negative!</p>
+  } @else {
+    <p>Count is between 0 and 5</p>
+  }
+
+</div>
